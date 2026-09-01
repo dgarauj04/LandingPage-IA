@@ -1,10 +1,10 @@
 import { 
   Brain, 
-  Sparkles, 
-  Image as ImageIcon, 
-  Video, 
-  Palette, 
-  Bot, 
+  Settings, 
+  Workflow,
+  Lightbulb, 
+  Code,
+  Gauge,
   Github, 
   Linkedin, 
   ExternalLink 
@@ -13,46 +13,46 @@ import type { Service, SocialLink, Project } from "./types";
 
 export const services: Service[] = [
   {
-    title: "Criação de IA",
+    title: "Criação",
     description: "Desenvolvimento de modelos e soluções personalizadas de inteligência artificial para o seu negócio.",
     icon: Brain,
-    color: "text-amber-600",
-    bg: "bg-linear-to-br from-amber-100 to-amber-200/50"
+    color: "text-zinc-800",
+    bg: "bg-linear-to-br from-zinc-200 to-zinc-300/50"
   },
   {
-    title: "Engenharia de Prompt",
-    description: "Otimização de comandos para extrair o máximo potencial de LLMs como GPT-4, Claude e Gemini.",
-    icon: Sparkles,
-    color: "text-yellow-600",
-    bg: "bg-linear-to-br from-yellow-100 to-yellow-200/50"
+    title: "Automação",
+    description: "Workflows inteligentes e automação de processos para escalar a operação de sua empresa com máxima eficiência.",
+    icon: Workflow,
+    color: "text-zinc-700",
+    bg: "bg-linear-to-br from-zinc-100 to-zinc-200/50"
   },
   {
-    title: "Criação de Imagem",
-    description: "Geração de artes, ilustrações e fotos realistas utilizando Midjourney, DALL-E e Stable Diffusion.",
-    icon: ImageIcon,
-    color: "text-orange-600",
-    bg: "bg-linear-to-br from-orange-100 to-orange-200/50"
+    title: "Implementação",
+    description: "Integração contínua de APIs e sistemas avançados de IA dentro da sua arquitetura atual de software.",
+    icon: Code,
+    color: "text-slate-800",
+    bg: "bg-linear-to-br from-slate-200 to-slate-300/50"
   },
   {
-    title: "Criação de Vídeo",
-    description: "Produção de vídeos cinematográficos e animações geradas por IA para marketing e conteúdo.",
-    icon: Video,
-    color: "text-amber-700",
-    bg: "bg-linear-to-br from-amber-100 to-amber-200/50"
+    title: "Consultoria",
+    description: "Direcionamento estratégico para adoção de Inteligência Artificial e transformação digital corporativa.",
+    icon: Lightbulb,
+    color: "text-gray-800",
+    bg: "bg-linear-to-br from-gray-200 to-gray-300/50"
   },
   {
-    title: "Design de Logos",
-    description: "Identidade visual moderna e logos conceituais criados com auxílio de algoritmos generativos.",
-    icon: Palette,
-    color: "text-yellow-700",
-    bg: "bg-linear-to-br from-yellow-100 to-yellow-200/50"
+    title: "Otimização",
+    description: "Engenharia de prompt e fine-tuning para extrair o máximo potencial de LLMs reduzindo custos computacionais.",
+    icon: Gauge,
+    color: "text-neutral-700",
+    bg: "bg-linear-to-br from-neutral-200 to-neutral-300/50"
   },
   {
-    title: "Chatbots com IA",
-    description: "Agentes inteligentes e chatbots conversacionais integrados com as APIs mais avançadas do mercado.",
-    icon: Bot,
-    color: "text-orange-700",
-    bg: "bg-linear-to-br from-orange-100 to-orange-200/50"
+    title: "Treinamento",
+    description: "Capacitação de equipes para utilização de ferramentas generativas no dia a dia da operação.",
+    icon: Settings,
+    color: "text-zinc-800",
+    bg: "bg-linear-to-br from-zinc-100 to-zinc-200/50"
   }
 ];
 
@@ -64,21 +64,21 @@ export const socialLinks: SocialLink[] = [
 
 export const projects: Project[] = [
   {
-    title: "EcoChat AI",
-    category: "Chatbots",
-    description: "Sistema de atendimento automatizado para e-commerce com integração de estoque em tempo real.",
-    image: "https://picsum.photos/seed/project1/600/400"
+    title: "Plataforma Core AI",
+    category: "Implementação",
+    description: "Sistema unificado de atendimento automatizado com integração de dados em tempo real.",
+    image: "https://picsum.photos/seed/project1black/600/400?grayscale"
   },
   {
-    title: "PromptMaster Pro",
-    category: "Engenharia de Prompt",
-    description: "Framework de otimização de prompts que reduziu custos de API em 40% para uma fintech.",
-    image: "https://picsum.photos/seed/project2/600/400"
+    title: "Automação de Backoffice",
+    category: "Automação",
+    description: "Framework de automação de processos que reduziu custos operacionais em 40%.",
+    image: "https://picsum.photos/seed/project2black/600/400?grayscale"
   },
   {
-    title: "VisionGen Studio",
-    category: "Criação de Imagem",
-    description: "Pipeline de geração de assets para jogos utilizando Stable Diffusion e ControlNet.",
-    image: "https://picsum.photos/seed/project3/600/400"
+    title: "Estratégia Digital Cloud",
+    category: "Consultoria",
+    description: "Projeto de reestruturação de arquitetura na nuvem focado em alta disponibilidade e IA.",
+    image: "https://picsum.photos/seed/project3black/600/400?grayscale"
   }
 ];

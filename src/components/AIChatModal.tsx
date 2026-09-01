@@ -25,7 +25,7 @@ type ChatStep = "NAME" | "NEED" | "DETAILS" | "EMAIL" | "SUMMARY" | "CONFIRMED";
 
 export function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
   const [messages, setMessages] = useState<Message[]>([
-    { role: "bot", content: "Olá! Sou a assistente de IA do Douglas. Para começarmos, como posso te chamar?" }
+    { role: "bot", content: "Olá! Sou N.O.V.A, assistente de IA do Douglas. Para começarmos, como posso te chamar?" }
   ]);
   const [input, setInput] = useState("");
   const [step, setStep] = useState<ChatStep>("NAME");
@@ -102,7 +102,7 @@ Está tudo correto ou deseja alterar algo?`;
       setMessages(prev => [...prev, { role: "bot", content: summary }]);
     } else if (step === "SUMMARY") {
       if (userMessage.toLowerCase().includes("sim") || userMessage.toLowerCase().includes("ok") || userMessage.toLowerCase().includes("certo") || userMessage.toLowerCase().includes("tudo")) {
-        setMessages(prev => [...prev, { role: "bot", content: "Perfeito! Seus dados foram coletados e logo o Douglas entrará em contato com você por e-mail. Obrigado!" }]);
+        setMessages(prev => [...prev, { role: "bot", content: "Perfeito! Seus dados foram coletados e logo nossa equipe entrará em contato com você por e-mail. Obrigado!" }]);
         setStep("CONFIRMED");
         console.log("Dados finais para envio:", { ...userData, email: userData.email || userMessage });
       } else {
@@ -116,26 +116,26 @@ Está tudo correto ou deseja alterar algo?`;
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+        <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col h-[600px] border border-amber-100"
+            className="bg-zinc-950 w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col h-[600px] border border-zinc-800"
           >
-            <div className="p-6 bg-amber-500/80 flex items-center justify-between text-white">
+            <div className="p-6 bg-zinc-900 border-b border-zinc-800 flex items-center justify-between text-zinc-100">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
-                  <Bot className="w-6 h-6" />
+                <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center">
+                  <Bot className="w-6 h-6 text-zinc-100" />
                 </div>
                 <div>
-                  <h3 className="font-bold">I.R.I.S</h3>
-                  <p className="text-xs text-white/80">Online agora</p>
+                  <h3 className="font-bold tracking-widest">N.O.V.A</h3>
+                  <p className="text-xs text-zinc-400">Neural Orchestration & Visual Assistant</p>
                 </div>
               </div>
               <button 
                 onClick={onClose}
-                className="p-2 hover:bg-white/20 rounded-full transition-colors"
+                className="p-2 hover:bg-zinc-800 rounded-full transition-colors text-zinc-400 hover:text-white"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -143,7 +143,7 @@ Está tudo correto ou deseja alterar algo?`;
 
             <div 
               ref={scrollRef}
-              className="flex-1 overflow-y-auto p-6 space-y-4 bg-yellow-100/50"
+              className="flex-1 overflow-y-auto p-6 space-y-4 bg-zinc-950"
             >
               {messages.map((msg, i) => (
                 <motion.div
@@ -154,14 +154,14 @@ Está tudo correto ou deseja alterar algo?`;
                 >
                   <div className={`flex gap-3 max-w-[85%] ${msg.role === "user" ? "flex-row-reverse" : ""}`}>
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
-                      msg.role === "user" ? "bg-amber-600" : "bg-white border border-zinc-200"
+                      msg.role === "user" ? "bg-zinc-100 text-zinc-950" : "bg-zinc-800 text-zinc-100 border border-zinc-700"
                     }`}>
-                      {msg.role === "user" ? <User className="w-4 h-4 text-white" /> : <Bot className="w-4 h-4 text-amber-600" />}
+                      {msg.role === "user" ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                     </div>
                     <div className={`p-4 rounded-2xl text-sm leading-relaxed ${
                       msg.role === "user" 
-                        ? "bg-amber-600 text-white rounded-tr-none" 
-                        : "bg-white text-zinc-800 border border-zinc-100 shadow-sm rounded-tl-none"
+                        ? "bg-zinc-100 text-zinc-950 rounded-tr-none" 
+                        : "bg-zinc-900 text-zinc-300 border border-zinc-800 shadow-sm rounded-tl-none"
                     }`}>
                       <div className="whitespace-pre-wrap">{msg.content}</div>
                     </div>
@@ -171,20 +171,20 @@ Está tudo correto ou deseja alterar algo?`;
               {isLoading && (
                 <div className="flex justify-start">
                   <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-white border border-zinc-200 flex items-center justify-center">
-                      <Bot className="w-4 h-4 text-amber-600" />
+                    <div className="w-8 h-8 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center">
+                      <Bot className="w-4 h-4 text-zinc-100" />
                     </div>
-                    <div className="p-4 rounded-2xl bg-white border border-zinc-100 shadow-sm rounded-tl-none">
-                      <Loader2 className="w-4 h-4 animate-spin text-amber-600" />
+                    <div className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800 shadow-sm rounded-tl-none">
+                      <Loader2 className="w-4 h-4 animate-spin text-zinc-400" />
                     </div>
                   </div>
                 </div>
               )}
             </div>
 
-            <div className="p-6 bg-mist-500 border-t border-zinc-100">
+            <div className="p-6 bg-zinc-900 border-t border-zinc-800">
               {step === "CONFIRMED" ? (
-                <div className="flex items-center justify-center gap-2 text-emerald-600 font-medium py-2">
+                <div className="flex items-center justify-center gap-2 text-emerald-500 font-medium py-2">
                   <CheckCircle2 className="w-5 h-5" />
                   Mensagem enviada com sucesso!
                 </div>
@@ -197,12 +197,12 @@ Está tudo correto ou deseja alterar algo?`;
                     onKeyPress={(e) => e.key === "Enter" && handleSend()}
                     placeholder="Digite sua mensagem..."
                     disabled={isLoading}
-                    className="flex-1 px-6 py-3 rounded-full bg-zinc-100 border border-transparent focus:border-amber-500 focus:bg-white outline-none transition-all text-sm"
+                    className="flex-1 px-6 py-3 rounded-full bg-zinc-800 border border-transparent focus:border-zinc-500 focus:bg-zinc-800 outline-none transition-all text-sm text-zinc-100"
                   />
                   <button
                     onClick={handleSend}
                     disabled={isLoading || !input.trim()}
-                    className="w-12 h-12 rounded-full bg-amber-600 text-white flex items-center justify-center hover:bg-amber-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-amber-600/20"
+                    className="w-12 h-12 rounded-full bg-zinc-100 text-zinc-950 flex items-center justify-center hover:bg-white transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-white/10"
                   >
                     <Send className="w-5 h-5" />
                   </button>
