@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Brain, Workflow, Code, Lightbulb, Gauge, Settings } from "lucide-react";
 
-/* ── Animated SVG Thumbnails ── */
 const ThumbnailBrain = () => (
   <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <defs>
@@ -20,7 +19,6 @@ const ThumbnailBrain = () => (
     </defs>
     <rect width="600" height="360" fill="url(#bg1)" />
     <ellipse cx="300" cy="180" rx="200" ry="130" fill="url(#glow1)" />
-    {/* Neural nodes */}
     {[
       [300,180],[180,100],[420,100],[150,220],[450,220],[260,290],[340,290],
       [100,150],[500,150],[230,60],[370,60]
@@ -35,7 +33,6 @@ const ThumbnailBrain = () => (
         </circle>
       </g>
     ))}
-    {/* Connections */}
     {[
       [300,180,180,100],[300,180,420,100],[300,180,150,220],[300,180,450,220],
       [180,100,100,150],[420,100,500,150],[180,100,230,60],[420,100,370,60],
@@ -45,7 +42,6 @@ const ThumbnailBrain = () => (
         <animate attributeName="opacity" values="0.4;0.8;0.4" dur={`${2 + i * 0.25}s`} repeatCount="indefinite" />
       </line>
     ))}
-    {/* Data pulse animations */}
     {[
       [300,180,180,100],[300,180,420,100],[300,180,150,220]
     ].map(([x1,y1,x2,y2], i) => (
@@ -71,7 +67,6 @@ const ThumbnailWorkflow = () => (
       </filter>
     </defs>
     <rect width="600" height="360" fill="url(#bg2)" />
-    {/* Workflow boxes */}
     {[
       { x: 40, y: 140, label: "INPUT", w: 100, h: 50 },
       { x: 200, y: 80, label: "PROCESS A", w: 120, h: 50 },
@@ -86,7 +81,6 @@ const ThumbnailWorkflow = () => (
         <text x={box.x + box.w/2} y={box.y + box.h/2 + 4} textAnchor="middle" fill="#a1a1aa" fontSize="9" fontFamily="monospace" letterSpacing="1">{box.label}</text>
       </g>
     ))}
-    {/* Arrows */}
     {[
       [140,165,200,105],[140,165,200,225],[320,105,390,155],[320,225,390,165],[240,250,240,290]
     ].map(([x1,y1,x2,y2], i) => (
@@ -97,14 +91,12 @@ const ThumbnailWorkflow = () => (
         <path d="M 0 0 L 6 3 L 0 6 z" fill="#52525b" />
       </marker>
     </defs>
-    {/* Moving data packets */}
     <circle r="4" fill="#e4e4e7" opacity="0.9">
       <animateMotion dur="2.5s" repeatCount="indefinite" path="M140,165 L200,105 L320,105 L390,155" />
     </circle>
     <circle r="3" fill="#a1a1aa" opacity="0.7">
       <animateMotion dur="3s" repeatCount="indefinite" begin="1s" path="M140,165 L200,225 L320,225 L390,165" />
     </circle>
-    {/* Scan line */}
     <rect x="0" y="0" width="600" height="2" fill="#ffffff" opacity="0.03">
       <animate attributeName="y" values="0;360;0" dur="4s" repeatCount="indefinite" />
     </rect>
@@ -121,14 +113,11 @@ const ThumbnailCode = () => (
       </radialGradient>
     </defs>
     <rect width="600" height="360" fill="url(#bg3)" />
-    {/* Code window */}
     <rect x="60" y="40" width="480" height="280" rx="12" fill="#18181b" stroke="#27272a" strokeWidth="1.5" />
-    {/* Window buttons */}
     <circle cx="88" cy="65" r="6" fill="#3f3f46" />
     <circle cx="108" cy="65" r="6" fill="#3f3f46" />
     <circle cx="128" cy="65" r="6" fill="#3f3f46" />
     <line x1="60" y1="82" x2="540" y2="82" stroke="#27272a" strokeWidth="1" />
-    {/* Code lines */}
     {[
       { y: 108, w: 180, color: "#a1a1aa", indent: 0 },
       { y: 128, w: 140, color: "#71717a", indent: 20 },
@@ -145,11 +134,9 @@ const ThumbnailCode = () => (
         <animate attributeName="opacity" values="0.6;1;0.6" dur={`${3 + i * 0.2}s`} repeatCount="indefinite" begin={`${i * 0.1}s`} />
       </rect>
     ))}
-    {/* Cursor blink */}
     <rect x="88" y="308" width="2" height="12" fill="#e4e4e7" opacity="0.8">
       <animate attributeName="opacity" values="0.8;0;0.8" dur="1s" repeatCount="indefinite" />
     </rect>
-    {/* Side decorations */}
     <rect x="520" y="100" width="20" height="3" rx="1.5" fill="#3f3f46">
       <animate attributeName="y" values="100;280;100" dur="5s" repeatCount="indefinite" />
     </rect>
@@ -166,7 +153,6 @@ const ThumbnailConsultoria = () => (
       </radialGradient>
     </defs>
     <rect width="600" height="360" fill="url(#bg4)" />
-    {/* Chart bars */}
     {[60, 90, 45, 110, 75, 130, 95, 140, 120].map((h, i) => (
       <g key={i}>
         <rect
@@ -187,7 +173,6 @@ const ThumbnailConsultoria = () => (
         </rect>
       </g>
     ))}
-    {/* Trend line */}
     <polyline
       points="98,220 150,190 202,235 254,170 306,205 358,150 410,175 462,140 514,155"
       fill="none"
@@ -196,7 +181,6 @@ const ThumbnailConsultoria = () => (
       strokeDasharray="4 4"
       opacity="0.6"
     />
-    {/* X axis */}
     <line x1="70" y1="260" x2="540" y2="260" stroke="#27272a" strokeWidth="1.5" />
     <line x1="70" y1="100" x2="70" y2="260" stroke="#27272a" strokeWidth="1.5" />
     <text x="300" y="345" textAnchor="middle" fill="#52525b" fontSize="11" fontFamily="monospace" letterSpacing="4">STRATEGY • GROWTH ANALYTICS</text>
@@ -212,18 +196,15 @@ const ThumbnailOptimizacao = () => (
       </radialGradient>
     </defs>
     <rect width="600" height="360" fill="url(#bg5)" />
-    {/* Concentric circles - performance rings */}
     {[120, 95, 70, 45, 20].map((r, i) => (
       <circle key={i} cx="200" cy="180" r={r} fill="none" stroke="#27272a" strokeWidth="1" opacity={0.8 - i * 0.1}>
         <animate attributeName="r" values={`${r};${r+3};${r}`} dur={`${2+i*0.5}s`} repeatCount="indefinite" />
       </circle>
     ))}
-    {/* Gauge needle */}
     <line x1="200" y1="180" x2="200" y2="75" stroke="#d4d4d8" strokeWidth="2" strokeLinecap="round">
       <animateTransform attributeName="transform" type="rotate" from="-60 200 180" to="60 200 180" dur="3s" repeatCount="indefinite" direction="alternate" />
     </line>
     <circle cx="200" cy="180" r="8" fill="#3f3f46" stroke="#71717a" strokeWidth="1.5" />
-    {/* Speed labels */}
     {["0", "25", "50", "75", "100"].map((label, i) => {
       const angle = (-90 + i * 45) * Math.PI / 180;
       return (
@@ -231,7 +212,6 @@ const ThumbnailOptimizacao = () => (
           textAnchor="middle" fill="#52525b" fontSize="10" fontFamily="monospace">{label}</text>
       );
     })}
-    {/* Stats on right */}
     {[
       { label: "LATENCY", val: "12ms", y: 80 },
       { label: "TOKENS/S", val: "4.2K", y: 120 },
@@ -257,7 +237,6 @@ const ThumbnailTreinamento = () => (
       </radialGradient>
     </defs>
     <rect width="600" height="360" fill="url(#bg6)" />
-    {/* People icons */}
     {[
       { x: 100, y: 120 }, { x: 200, y: 100 }, { x: 300, y: 120 },
       { x: 150, y: 200 }, { x: 250, y: 200 },
@@ -270,7 +249,6 @@ const ThumbnailTreinamento = () => (
         <ellipse cx={pos.x} cy={pos.y + 8} rx="10" ry="6" fill="#3f3f46" />
       </g>
     ))}
-    {/* Connection to central AI */}
     {[
       [100,120],[200,100],[300,120],[150,200],[250,200]
     ].map(([x,y], i) => (
@@ -278,14 +256,12 @@ const ThumbnailTreinamento = () => (
         <animate attributeName="opacity" values="0.4;0.8;0.4" dur={`${1.5+i*0.3}s`} repeatCount="indefinite" />
       </line>
     ))}
-    {/* Central AI node */}
     <circle cx="450" cy="160" r="50" fill="#18181b" stroke="#3f3f46" strokeWidth="2">
       <animate attributeName="stroke" values="#3f3f46;#71717a;#3f3f46" dur="2s" repeatCount="indefinite" />
     </circle>
     <circle cx="450" cy="160" r="40" fill="none" stroke="#27272a" strokeWidth="1" />
     <text x="450" y="155" textAnchor="middle" fill="#a1a1aa" fontSize="9" fontFamily="monospace" letterSpacing="1">NOVA</text>
     <text x="450" y="170" textAnchor="middle" fill="#52525b" fontSize="8" fontFamily="monospace">ENGINE</text>
-    {/* Progress bars */}
     {[
       { label: "Python", pct: 85, y: 270 },
       { label: "Prompt Eng", pct: 92, y: 295 },
@@ -390,7 +366,6 @@ export const Projects = () => {
       id="servicos-destaque"
       className="py-28 px-6 relative overflow-hidden bg-zinc-950"
     >
-      {/* Animated parallax background grid */}
       <motion.div
         style={{ y: smoothBgY }}
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -405,7 +380,6 @@ export const Projects = () => {
         </svg>
       </motion.div>
 
-      {/* Glowing orbs */}
       <motion.div style={{ opacity }}
         className="absolute pointer-events-none inset-0"
       >
@@ -414,7 +388,6 @@ export const Projects = () => {
       </motion.div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -445,7 +418,6 @@ export const Projects = () => {
           </p>
         </motion.div>
 
-        {/* Cards Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -461,24 +433,19 @@ export const Projects = () => {
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
               className="group relative rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 hover:border-zinc-600 shadow-sm hover:shadow-2xl hover:shadow-black/60 transition-all duration-500 cursor-default"
             >
-              {/* Thumbnail area */}
               <div className="relative aspect-video overflow-hidden bg-zinc-950">
-                {/* Animated gradient overlay on hover */}
                 <div className="absolute inset-0 bg-linear-to-t from-zinc-900 via-zinc-900/40 to-transparent z-10 group-hover:from-zinc-950/90 group-hover:via-zinc-900/20 transition-all duration-500" />
 
-                {/* SVG Thumbnail */}
                 <div className="w-full h-full scale-100 group-hover:scale-105 transition-transform duration-700">
                   <service.Thumbnail />
                 </div>
 
-                {/* Category badge */}
                 <div className="absolute top-4 left-4 z-20">
                   <span className="px-3 py-1 text-xs font-semibold tracking-widest uppercase bg-zinc-950/80 backdrop-blur-sm border border-zinc-700 rounded-full text-zinc-400 group-hover:border-zinc-500 group-hover:text-zinc-300 transition-colors">
                     {service.tag}
                   </span>
                 </div>
 
-                {/* Icon overlay */}
                 <div className="absolute bottom-4 right-4 z-20">
                   <div className="w-10 h-10 rounded-2xl bg-zinc-950/80 backdrop-blur-sm border border-zinc-700 flex items-center justify-center group-hover:border-zinc-500 transition-colors">
                     <service.icon className="w-5 h-5 text-zinc-300" />
@@ -486,7 +453,6 @@ export const Projects = () => {
                 </div>
               </div>
 
-              {/* Card content */}
               <div className="p-6">
                 <span className="text-xs font-semibold text-zinc-600 uppercase tracking-wider mb-2 block group-hover:text-zinc-400 transition-colors">
                   {service.category}
@@ -498,7 +464,6 @@ export const Projects = () => {
                   {service.description}
                 </p>
 
-                {/* Animated bottom border */}
                 <div className="mt-5 h-px bg-zinc-800 relative overflow-hidden">
                   <motion.div
                     className="absolute inset-y-0 left-0 w-0 bg-linear-to-r from-transparent via-zinc-400 to-transparent"
@@ -510,7 +475,6 @@ export const Projects = () => {
                 </div>
               </div>
 
-              {/* Shine effect on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500">
                 <div className="absolute top-0 left-[-100%] w-1/3 h-full bg-linear-to-r from-transparent via-white/5 to-transparent skew-x-12 group-hover:left-[150%] transition-all duration-1000" />
               </div>
@@ -518,7 +482,6 @@ export const Projects = () => {
           ))}
         </motion.div>
 
-        {/* Bottom CTA row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
