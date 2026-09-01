@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { services } from "../constants";
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -11,7 +11,7 @@ const containerVariants = {
   }
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 40, scale: 0.95 },
   visible: { 
     opacity: 1, 
@@ -24,7 +24,6 @@ const cardVariants = {
 export const Services = () => {
   return (
     <section id="servicos" className="py-28 px-6 relative overflow-hidden bg-zinc-950 border-t border-zinc-900">
-      {/* Animated radial scan line */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
           animate={{ rotate: 360 }}
@@ -36,11 +35,9 @@ export const Services = () => {
         />
       </div>
 
-      {/* Background gradient */}
       <div className="absolute inset-0 bg-linear-to-b from-transparent via-zinc-900/20 to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +64,6 @@ export const Services = () => {
           </p>
         </motion.div>
 
-        {/* Cards grid */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -83,18 +79,14 @@ export const Services = () => {
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
               className="p-8 rounded-3xl bg-zinc-900/80 border border-zinc-800 hover:border-zinc-600 transition-all duration-400 group shadow-sm hover:shadow-2xl hover:shadow-black/60 relative overflow-hidden cursor-default"
             >
-              {/* Hover radial glow */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                 <div className="absolute inset-0 bg-linear-to-br from-zinc-800/40 to-transparent" />
               </div>
-
-              {/* Number badge */}
               <div className="absolute top-6 right-6 text-4xl font-black text-zinc-800 group-hover:text-zinc-700 transition-colors select-none">
                 {String(idx + 1).padStart(2, "0")}
               </div>
 
               <div className="relative z-10">
-                {/* Icon */}
                 <motion.div
                   whileHover={{ rotate: 5, scale: 1.1 }}
                   className={`w-14 h-14 rounded-2xl ${service.bg} flex items-center justify-center mb-6 shadow-sm`}
@@ -109,7 +101,6 @@ export const Services = () => {
                   {service.description}
                 </p>
 
-                {/* Animated line */}
                 <div className="mt-6 h-px bg-zinc-800 relative overflow-hidden">
                   <motion.div
                     className="absolute inset-y-0 left-0 bg-linear-to-r from-zinc-600 to-transparent"
@@ -121,7 +112,6 @@ export const Services = () => {
                 </div>
               </div>
 
-              {/* Corner shine */}
               <div className="absolute bottom-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                 <div className="w-full h-full bg-linear-to-tl from-zinc-700/20 to-transparent rounded-tl-3xl" />
               </div>

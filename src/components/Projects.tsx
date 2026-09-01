@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, type Variants } from "framer-motion";
 import { Brain, Workflow, Code, Lightbulb, Gauge, Settings } from "lucide-react";
 
 const ThumbnailBrain = () => (
@@ -41,15 +41,6 @@ const ThumbnailBrain = () => (
       <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#71717a" strokeWidth="1" opacity="0.4">
         <animate attributeName="opacity" values="0.4;0.8;0.4" dur={`${2 + i * 0.25}s`} repeatCount="indefinite" />
       </line>
-    ))}
-    {[
-      [300,180,180,100],[300,180,420,100],[300,180,150,220]
-    ].map(([x1,y1,x2,y2], i) => (
-      <circle key={i} r="3" fill="#ffffff" opacity="0.8">
-        <animateMotion dur={`${1.5 + i * 0.5}s`} repeatCount="indefinite">
-          <mpath href={`#path${i}`} />
-        </animateMotion>
-      </circle>
     ))}
     <text x="300" y="345" textAnchor="middle" fill="#52525b" fontSize="11" fontFamily="monospace" letterSpacing="4">NEURAL NETWORK • DEEP LEARNING</text>
   </svg>
@@ -331,7 +322,7 @@ const FEATURED_SERVICES = [
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -339,7 +330,7 @@ const containerVariants = {
   }
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 50, scale: 0.95 },
   visible: {
     opacity: 1,
@@ -493,7 +484,7 @@ export const Projects = () => {
             Todos os serviços disponíveis para contratação imediata
           </p>
           <div className="flex items-center justify-center gap-3">
-            {FEATURED_SERVICES.map((s, i) => (
+            {FEATURED_SERVICES.map((_, i) => (
               <motion.div
                 key={i}
                 initial={{ scale: 0 }}
